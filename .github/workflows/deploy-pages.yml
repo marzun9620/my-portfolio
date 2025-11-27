@@ -36,9 +36,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Export static site
-        run: npx next export
-
       - name: Disable Jekyll
         run: touch out/.nojekyll
 
