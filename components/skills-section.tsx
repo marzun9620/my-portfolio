@@ -27,7 +27,7 @@ export function SkillsSection() {
   return (
     <section id="skills" className="scroll-mt-24">
       <div className="space-y-8">
-        <h2 className="text-sm tracking-widest text-muted-foreground uppercase lg:hidden">Skills</h2>
+        <h2 className="text-sm tracking-widest text-muted-foreground uppercase">Skills</h2>
 
         <div className="grid gap-8">
           {skillCategories.map((category, index) => (

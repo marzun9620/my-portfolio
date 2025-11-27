@@ -4,8 +4,8 @@ import { useState, useEffect } from "react"
 
 const navItems = [
   { label: "ABOUT", href: "#about" },
-  { label: "EXPERIENCE", href: "#experience" },
   { label: "RESEARCH", href: "#research" },
+  { label: "EXPERIENCE", href: "#experience" },
   { label: "SKILLS", href: "#skills" },
 ]
 
@@ -13,25 +13,47 @@ export function Navigation() {
   const [activeSection, setActiveSection] = useState("about")
 
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = navItems.map((item) => item.href.replace("#", ""))
-      const scrollPosition = window.scrollY + 100
+    const sections = navItems.map((item) => item.href.replace("#", ""))
 
-      for (const section of sections) {
-        const element = document.getElementById(section)
-        if (element) {
-          const { offsetTop, offsetHeight } = element
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(section)
-            break
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
           }
-        }
+        })
+      },
+      {
+        rootMargin: "-40% 0px -40% 0px", // favor the section nearest mid-viewport
+        threshold: 0.1,
+      }
+    )
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+
+    // Initialize from current hash if present
+    if (window.location.hash) {
+      const hashId = window.location.hash.replace("#", "")
+      if (sections.includes(hashId)) {
+        setActiveSection(hashId)
       }
     }
 
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
+    return () => observer.disconnect()
   }, [])
+
+  const handleNavClick = (href: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault()
+    const targetId = href.replace("#", "")
+    const element = document.getElementById(targetId)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" })
+      setActiveSection(targetId)
+    }
+  }
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-border">
@@ -45,6 +67,7 @@ export function Navigation() {
               <a
                 key={item.label}
                 href={item.href}
+                onClick={handleNavClick(item.href)}
                 className={`text-xs tracking-widest transition-colors ${
                   activeSection === item.href.replace("#", "")
                     ? "text-primary"

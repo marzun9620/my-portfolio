@@ -14,8 +14,8 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-16 pt-24 pb-16">
           <HeroSection />
           <div className="space-y-24">
-            <ExperienceSection />
             <ResearchSection />
+            <ExperienceSection />
             <SkillsSection />
           </div>
         </div>

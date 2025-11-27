@@ -2,22 +2,22 @@ import { ArrowUpRightIcon } from "lucide-react"
 
 const experiences = [
   {
-    period: "2024 — PRESENT",
+    period: "2025 — PRESENT",
     title: "Software Engineer",
     company: "Nesia Inc.",
     companyUrl: "https://nesia-inc.com/",
     description:
       "Working on AI integration and system development projects, leveraging expertise in automation and software development to build AI-driven solutions for businesses.",
-    skills: ["AI Integration", "System Development", "Automation", "Software Engineering"],
+    skills: ["Remote","AI Integration", "System Development", "GCP", "Software Engineering", "LLMs"],
   },
   {
-    period: "2023 — 2024",
-    title: "Software Engineer",
+    period: "Apr 2025 — Nov 2025",
+    title: "Automation Engineer",
     company: "MarginEdge",
     companyUrl: "https://www.marginedge.com/",
     description:
       "Part of the Dhaka engineering team developing restaurant management software for real-time food cost tracking and automating back-office operations.",
-    skills: ["Restaurant Tech", "Backend Development", "API Development", "Database Management"],
+    skills: ["Restaurant Tech", "Backend Development", "AWS", "Automation Test Script"],
   },
 ]
 
@@ -25,7 +25,7 @@ export function ExperienceSection() {
   return (
     <section id="experience" className="scroll-mt-24">
       <div className="space-y-8">
-        <h2 className="text-sm tracking-widest text-muted-foreground uppercase lg:hidden">Experience</h2>
+        <h2 className="text-sm tracking-widest text-muted-foreground uppercase">Experience</h2>
 
         {experiences.map((exp, index) => (
           <a

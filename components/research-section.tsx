@@ -9,6 +9,9 @@ const publications = [
     tags: ["Robotics", "UAV", "Surveillance"],
     type: "Conference Paper",
     link: "https://ieeexplore.ieee.org/document/11171712",
+    venue: "2025 IEEE International Conference on Quantum Photonics, Artificial Intelligence, and Networking (QPAIN)",
+    publisher: "IEEE (Photonics Society)",
+    indexing: "IEEE Xplore ; Scopus ",
   },
   {
     year: "2025",
@@ -18,6 +21,9 @@ const publications = [
     tags: ["Computer Vision", "Deep Learning", "Image Processing"],
     type: "Conference Paper",
     link: "https://ieeexplore.ieee.org/document/11172051",
+    venue: "2025 IEEE International Conference on Quantum Photonics, Artificial Intelligence, and Networking (QPAIN)",
+    publisher: "IEEE (Photonics Society)",
+    indexing: "IEEE Xplore ; Scopus",
   },
   {
     year: "2024",
@@ -27,6 +33,9 @@ const publications = [
     tags: ["Medical Imaging", "Image Segmentation", "Healthcare AI"],
     type: "Conference Paper",
     link: "https://ieeexplore.ieee.org/document/11024738",
+    venue: "2024 13th International Conference on Electrical and Computer Engineering (ICECE), BUET",
+    publisher: "IEEE",
+    indexing: "IEEE Xplore",
   },
 ]
 
@@ -34,7 +43,7 @@ export function ResearchSection() {
   return (
     <section id="research" className="scroll-mt-24">
       <div className="space-y-8">
-        <h2 className="text-sm tracking-widest text-muted-foreground uppercase lg:hidden">Research & Publications</h2>
+        <h2 className="text-sm tracking-widest text-muted-foreground uppercase">Research & Publications</h2>
 
         {publications.map((pub, index) => (
           <a
@@ -54,7 +63,11 @@ export function ResearchSection() {
                   {pub.title}
                   <ArrowUpRightIcon className="w-4 h-4 flex-shrink-0 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all mt-1" />
                 </h3>
+                <p className="text-xs text-muted-foreground uppercase tracking-wide">
+                  {pub.venue} · {pub.publisher}
+                </p>
                 <p className="text-muted-foreground text-sm leading-relaxed">{pub.description}</p>
+                <p className="text-xs text-primary font-medium">Indexing: {pub.indexing}</p>
                 <div className="flex flex-wrap gap-2 pt-2">
                   {pub.tags.map((tag) => (
                     <span key={tag} className="px-3 py-1 text-xs font-medium text-primary bg-primary/10 rounded-full">

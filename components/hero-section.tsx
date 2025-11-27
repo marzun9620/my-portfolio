@@ -13,6 +13,8 @@ export function HeroSection() {
   return (
     <section id="about" className="lg:sticky lg:top-24 lg:h-fit">
       <div className="space-y-6">
+        <h2 className="text-sm tracking-widest text-muted-foreground uppercase">About</h2>
+
         <div className="relative w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20 bg-muted">
           <Image
             src="/profile.png"
